@@ -20,6 +20,6 @@ cross build --release --target=${TARGET_ARCH}
 rsync -a ${SOURCE_PATH} ${SOURCE_SERVICE} ${TARGET_HOST}:${TARGET_PATH}/
 ssh -t ${TARGET_HOST} \
     "sudo install ${TARGET_BIN} /usr/bin/${PROJECT_NAME} && \
-    sudo install -Dm644 ${TARGET_SERVICE} /usr/lib/systemd/${SOURCE_SERVICE} && \
+    sudo install -Dm644 ${TARGET_SERVICE} /etc/systemd/system/${SOURCE_SERVICE} && \
     sudo systemctl daemon-reload && \
     sudo systemctl restart ${SOURCE_SERVICE}"
